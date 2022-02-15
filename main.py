@@ -31,7 +31,7 @@ while True:
     if choice == '1':
         name_dir = input('Введите имя папки:')
         if not os.path.exists(name_dir):
-            os.mkdir(name_dir)
+            os.mkdir(name_dir, mode = 0o777)
             print(f'Папка {name_dir} создана.')
         else:
             print(f'Папка {name_dir} уже существует.')
@@ -48,7 +48,8 @@ while True:
     elif choice == '3':
         name_dir = input('Введите имя папки или файла: ')
         new_name_dir = input('Введите новое имя папки или файла: ')
-        shutil.copyfile(new_name_dir, new_name_dir)
+        shutil.copytree(name_dir, new_name_dir)
+        print(f'Папка {name_dir} скопирована. ')
     elif choice == '4':
         list_dir()
     elif choice == '5':
